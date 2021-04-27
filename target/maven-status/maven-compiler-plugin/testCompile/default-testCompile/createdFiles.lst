@@ -1,9 +1,7 @@
-BasePage.class
+EventsCardsTest.class
 PeportsCategories.class
-BaseClass.class
 DatesValidation.class
-EventsCards.class
 CanadaEvents.class
 EventsListTest.class
 KeySearchReport.class
-EventDetails.class
+EventDetailsTest.class

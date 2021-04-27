@@ -1,16 +1,9 @@
 import Pages.StartPage;
 import com.codeborne.selenide.*;
-import javafx.scene.chart.ScatterChart;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
+
 import static com.codeborne.selenide.Selenide.*;
-import org.openqa.selenium.Capabilities;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriver.Options;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.remote.CapabilityType;
-import org.openqa.selenium.remote.DesiredCapabilities;
 
 
 public class EventsListTest {
@@ -23,10 +16,12 @@ public class EventsListTest {
      * 3 На странице отображаются карточки предстоящих мероприятий.
      * Количество карточек равно счетчику на кнопке Upcoming Events @param s
      */
+
     @Test
     public void eventsListView() {
 
         startPage.init();
+
         //     * 1 Пользователь переходит на вкладку events
         open("https://events.epam.com/events");
         // * 2 Пользователь принимает политку куков сайта
@@ -41,6 +36,7 @@ public class EventsListTest {
                     .shouldBe(Condition.visible)
                     .shouldBe(Condition.enabled)
                     .click();
+
 
   //    *  Количество карточек равно счетчику на кнопке Upcoming Events
 
