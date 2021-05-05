@@ -1,8 +1,6 @@
-EventsCardsTest.class
-KeySearchTest.class
 CanadaEventsTest.class
 DatesValidationTest.class
-CanadaEvents.class
 EventsListTest.class
 FiltersCategoriesTest.class
-EventDetailsTest.class
+EventsCardsTest.class
+KeySearchTest.class

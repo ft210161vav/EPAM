@@ -22,21 +22,7 @@ public class EventsListTest {
 
         startPage.init();
 
-        //     * 1 Пользователь переходит на вкладку events
-        open("https://events.epam.com/events");
-        // * 2 Пользователь принимает политку куков сайта
-        startPage.clickAcceptCookiesButton();
-        SelenideElement closePopup=$(".evnt-popup-close");
-
-        //   Пользователь нажимает на Upcoming Events
-            $("a[href='#']").shouldBe(Condition.visible).click();
-
-        if (closePopup.isDisplayed())
-            closePopup
-                    .shouldBe(Condition.visible)
-                    .shouldBe(Condition.enabled)
-                    .click();
-
+        startPage.eventView("//span[contains(text(),'Upcoming events')]");
 
   //    *  Количество карточек равно счетчику на кнопке Upcoming Events
 

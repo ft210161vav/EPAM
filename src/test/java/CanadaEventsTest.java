@@ -2,8 +2,10 @@ import Pages.BasePage;
 import Pages.StartPage;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Step;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -33,13 +35,14 @@ public class CanadaEventsTest {
     @Feature(value = "Просмотр прошедших мероприятий в Канаде:")
     @Step("3 Пользователь нажимает на Location в блоке фильтров" +
             " и выбирает Canada в выпадающем списке")
-    public void CanadaEvents(){
+    public void CanadaEvents() throws Exception {
     startPage.init();
+
         /**
          * * 1 Пользователь переходит на вкладку events
          *  * 2 Пользователь нажимает на Past Events
           */
-                startPage.eventView(".evnt-tab-item.nav-item");
+                startPage.eventView("//span[contains(text(),'Past Events')]");
    //
         // 3 Пользователь нажимает на Location в блоке фильтров и выбирает Canada в выпадающем списке
         $(By.id("filter_location")).should(Condition.visible).click();
@@ -53,11 +56,7 @@ public class CanadaEventsTest {
 
         // * Даты проведенных мероприятий меньше текущей даты.
         Date currentDate=new Date();
-        try {
         datesComparison(cardsCount,currentDate);
-                }
-        catch (Exception e)
-        { }
 
     }
     @Feature(value = "Сравнение количества мероприятий")

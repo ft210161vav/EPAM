@@ -1,17 +1,16 @@
 import Pages.StartPage;
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.SelenideElement;
-import org.apache.logging.log4j.core.tools.picocli.CommandLine;
+import javafx.util.converter.LocalDateStringConverter;
+import org.apache.commons.lang3.time.DateUtils;
 import org.junit.jupiter.api.Test;
 
 import java.text.ParseException;
-import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Locale;
 
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
 
 /**
  * 1 Пользователь переходит на вкладку events
@@ -19,7 +18,7 @@ import static com.codeborne.selenide.Selenide.open;
  * 3 На странице отображаются карточки предстоящих мероприятий.
  * 4 В блоке This week даты проведения мероприятий больше или равны текущей дате и находятся в пределах текущей недели.
  */
-public class DatesValidation {
+public class DatesValidationTest {
     StartPage startPage = new StartPage();
 
     @Test
@@ -28,12 +27,11 @@ public class DatesValidation {
     /** 1 Пользователь переходит на вкладку events
      *  2 Пользователь нажимает на Upcoming Events
      */
-        startPage.eventView("a[href='#']");
+        startPage.eventView("//span[contains(text(),'Upcoming events')]");
 // * 3 На странице отображаются карточки предстоящих мероприятий.
         String date=$(".date").shouldBe(Condition.visible).getText().substring(8);
-        String format = "dd MMM yyyy";
 
-            Date eventDate = parseDate(date,format);
+            Date eventDate = startPage.parseDate(date);
             Date currentDate=new Date();
 
 /**  Отображаемые даты проведения будущих мероприятий
@@ -42,10 +40,5 @@ public class DatesValidation {
         assert (currentDate.before(eventDate));
         }
 
-    private Date parseDate(String date, String format) throws ParseException
-    {
-        SimpleDateFormat formatter = new SimpleDateFormat(format, new Locale("en"));
-        return formatter.parse(date);
-    }
 
 }

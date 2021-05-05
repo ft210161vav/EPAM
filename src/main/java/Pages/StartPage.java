@@ -10,8 +10,11 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 
+import java.net.URI;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -26,8 +29,14 @@ public class StartPage {
 
 @Before
     public static void init() {
-        Configuration.holdBrowserOpen = false;
+    Configuration.browser="chrome";
+    Configuration.holdBrowserOpen = false;
         Configuration.driverManagerEnabled = true;
+        Configuration.baseUrl= "localhost:4444";
+        Configuration.clickViaJs=true;
+    Configuration.browserCapabilities=new DesiredCapabilities();
+    Configuration.browserCapabilities.setCapability("enableVNC",true);
+    Configuration.browserCapabilities.setCapability("enableVideo",false);
     SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
             .screenshots(true)
             .savePageSource(true)
@@ -36,8 +45,10 @@ public class StartPage {
 
 
     public StartPage clickAcceptCookiesButton() {
-        acceptCookiesButton.shouldBe(Condition.visible).click();
-            return this;
+            if (acceptCookiesButton.isDisplayed()) {
+                acceptCookiesButton.click();
+            }
+                return this;
     }
 @Test
     public void eventView(String tab){
@@ -49,7 +60,7 @@ public class StartPage {
 
     //   Пользователь нажимает на Past Events
 
-    $$(tab).last()
+    $$x(tab).last()
             .shouldBe(Condition.visible).
             click();
 
