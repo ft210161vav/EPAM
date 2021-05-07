@@ -8,6 +8,7 @@ import io.qameta.allure.Step;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
 import org.openqa.selenium.By;
 
 import java.text.ParseException;
@@ -16,8 +17,8 @@ import java.util.Date;
 import java.util.Locale;
 
 import static Pages.StartPage.init;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$$x;
 import static org.apache.commons.lang3.time.DateUtils.parseDate;
 
 /**
@@ -37,13 +38,12 @@ public class CanadaEventsTest extends StartPage{
     @Step("3 Пользователь нажимает на Location в блоке фильтров" +
             " и выбирает Canada в выпадающем списке")
     public void CanadaEvents() throws Exception {
-    //init();
 
         /**
          * * 1 Пользователь переходит на вкладку events
          *  * 2 Пользователь нажимает на Past Events
           */
-                startPage.eventView("//span[contains(text(),'Past Events')]");
+                eventView("//span[contains(text(),'Past Events')]");
    //
         // 3 Пользователь нажимает на Location в блоке фильтров и выбирает Canada в выпадающем списке
         $(By.id("filter_location")).should(Condition.visible).click();
@@ -77,6 +77,8 @@ public class CanadaEventsTest extends StartPage{
         assert (currentDate.after(eventDate));
     }
     }
+
+
     }
 
 

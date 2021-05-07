@@ -51,7 +51,6 @@ public class StartPage {
             }
                 return this;
     }
-    @Test
     public void eventView(String tab){
     //     * 1 Пользователь переходит на вкладку events
     open("https://events.epam.com/events");
