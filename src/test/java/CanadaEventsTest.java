@@ -15,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import static Pages.StartPage.init;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static org.apache.commons.lang3.time.DateUtils.parseDate;
@@ -28,7 +29,7 @@ import static org.apache.commons.lang3.time.DateUtils.parseDate;
  * Даты проведенных мероприятий меньше текущей даты.
  */
 
-public class CanadaEventsTest {
+public class CanadaEventsTest extends StartPage{
     StartPage startPage = new StartPage();
 
     @Test
@@ -36,7 +37,7 @@ public class CanadaEventsTest {
     @Step("3 Пользователь нажимает на Location в блоке фильтров" +
             " и выбирает Canada в выпадающем списке")
     public void CanadaEvents() throws Exception {
-    startPage.init();
+    //init();
 
         /**
          * * 1 Пользователь переходит на вкладку events

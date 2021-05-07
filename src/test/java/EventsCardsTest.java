@@ -4,14 +4,14 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Step;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Point;
 
 import java.util.ArrayList;
 
 import static com.codeborne.selenide.Selenide.*;
 
-public class EventsCardsTest {
+public class EventsCardsTest extends StartPage{
     StartPage startPage = new StartPage();
 
     /**
@@ -30,7 +30,6 @@ public class EventsCardsTest {
     @Feature(value = "Проверка блоков карточек мероприятий")
     @Step("Проверка, что блоки в карточке расположены друг за другом.")
     public void eventCardView() {
-        startPage.init();
         startPage.eventView("//span[contains(text(),'Past Events')]");
 
         /*

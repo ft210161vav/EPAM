@@ -4,12 +4,13 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import io.cucumber.java.Before;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.By;
+import org.aspectj.lang.annotation.Before;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -27,7 +28,7 @@ public class StartPage {
     protected static final SelenideElement acceptCookiesButton =
             $(By.id("onetrust-accept-btn-handler"));
 
-@Before
+@BeforeAll
     public static void init() {
     Configuration.browser="chrome";
     Configuration.holdBrowserOpen = false;
@@ -50,7 +51,7 @@ public class StartPage {
             }
                 return this;
     }
-@Test
+    @Test
     public void eventView(String tab){
     //     * 1 Пользователь переходит на вкладку events
     open("https://events.epam.com/events");
@@ -60,6 +61,7 @@ public class StartPage {
 
     //   Пользователь нажимает на Past Events
 
+    if (!tab.isEmpty())
     $$x(tab).last()
             .shouldBe(Condition.visible).
             click();

@@ -2,7 +2,6 @@ import Pages.StartPage;
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import io.cucumber.java.eo.Se;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.support.ByIdOrName;
 
@@ -13,12 +12,11 @@ import static com.codeborne.selenide.Selenide.*;
  * 2 Пользователь вводит ключевое слово QA в поле поиска
  * 3 На странице отображаются доклады, содержащие в названии ключевое слово поиска
  */
-public class KeySearchTest {
+public class KeySearchTest extends StartPage{
     StartPage startPage = new StartPage();
 
     @Test
     public void keySearch() {
-        startPage.init();
         startPage.videoTalks();
 // * 2 Пользователь вводит ключевое слово QA в поле поиска
         $(".evnt-text-fields.form-control.evnt-search")

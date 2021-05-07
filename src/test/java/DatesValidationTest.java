@@ -1,7 +1,5 @@
 import Pages.StartPage;
 import com.codeborne.selenide.Condition;
-import javafx.util.converter.LocalDateStringConverter;
-import org.apache.commons.lang3.time.DateUtils;
 import org.junit.jupiter.api.Test;
 
 import java.text.ParseException;
@@ -10,6 +8,7 @@ import java.time.LocalDate;
 import java.util.Date;
 import java.util.Locale;
 
+import static Pages.StartPage.init;
 import static com.codeborne.selenide.Selenide.$;
 
 /**
@@ -18,12 +17,11 @@ import static com.codeborne.selenide.Selenide.$;
  * 3 На странице отображаются карточки предстоящих мероприятий.
  * 4 В блоке This week даты проведения мероприятий больше или равны текущей дате и находятся в пределах текущей недели.
  */
-public class DatesValidationTest {
+public class DatesValidationTest extends StartPage {
     StartPage startPage = new StartPage();
 
     @Test
     public void datesValidation() throws Exception{
-        startPage.init();
     /** 1 Пользователь переходит на вкладку events
      *  2 Пользователь нажимает на Upcoming Events
      */

@@ -1,13 +1,18 @@
 import Pages.StartPage;
 import com.codeborne.selenide.*;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static Pages.StartPage.init;
 import static com.codeborne.selenide.Selenide.*;
 
 
-public class EventsListTest {
+public class EventsListTest extends StartPage{
     StartPage startPage = new StartPage();
+
 
     /**
      * Просмотр предстоящих мероприятий:
@@ -17,10 +22,10 @@ public class EventsListTest {
      * Количество карточек равно счетчику на кнопке Upcoming Events @param s
      */
 
-    @Test
-    public void eventsListView() {
 
-        startPage.init();
+    @Test
+    public void eventsListView()  {
+    //init();
 
         startPage.eventView("//span[contains(text(),'Upcoming events')]");
 

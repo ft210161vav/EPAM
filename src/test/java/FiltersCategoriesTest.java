@@ -4,13 +4,12 @@ import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.Sleeper;
 
-import java.time.Duration;
 
+import static Pages.StartPage.init;
 import static com.codeborne.selenide.Selenide.*;
 
-public class FiltersCategoriesTest {
+public class FiltersCategoriesTest extends StartPage{
     /**
      * 1 Пользователь переходит на вкладку Talks Library
      * 2 Пользователь нажимает на More Filters
@@ -22,8 +21,8 @@ public class FiltersCategoriesTest {
 
     @Test
     public void filterCategory() {
-        startPage.init();
         //* 1 Пользователь переходит на вкладку Talks Library
+        //init();
         startPage.videoTalks();
 
         //* 2 Пользователь нажимает на More Filters
