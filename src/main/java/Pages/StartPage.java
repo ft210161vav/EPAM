@@ -33,17 +33,21 @@ public class StartPage {
     Configuration.browser="chrome";
     Configuration.holdBrowserOpen = false;
         Configuration.driverManagerEnabled = true;
+        Configuration.remote = "http://localhost:4444/wd/hub";
         Configuration.baseUrl= "localhost:4444";
         Configuration.clickViaJs=true;
-    Configuration.browserCapabilities=new DesiredCapabilities();
-    Configuration.browserCapabilities.setCapability("enableVNC",true);
-    Configuration.browserCapabilities.setCapability("enableVideo",false);
+    DesiredCapabilities capabilities = new DesiredCapabilities();
+    capabilities.setCapability("browserName", "chrome");
+    capabilities.setCapability("browserVersion", "90.0");
+    capabilities.setCapability("enableVNC",true);
+    capabilities.setCapability("enableVideo",false);
+    Configuration.browserCapabilities = capabilities;
+
     SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
             .screenshots(true)
             .savePageSource(true)
     );
 }
-
 
     public StartPage clickAcceptCookiesButton() {
             if (acceptCookiesButton.isDisplayed()) {
