@@ -30,15 +30,15 @@ public class StartPage {
 
 @BeforeAll
     public static void init() {
-    Configuration.browser="chrome";
+    Configuration.browser="firefox";
     Configuration.holdBrowserOpen = false;
         Configuration.driverManagerEnabled = true;
         Configuration.remote = "http://localhost:4444/wd/hub";
         Configuration.baseUrl= "localhost:4444";
         Configuration.clickViaJs=true;
     DesiredCapabilities capabilities = new DesiredCapabilities();
-    capabilities.setCapability("browserName", "chrome");
-    capabilities.setCapability("browserVersion", "90.0");
+    capabilities.setCapability("browserName", "firefox");
+    capabilities.setCapability("browserVersion", "87.0");
     capabilities.setCapability("enableVNC",true);
     capabilities.setCapability("enableVideo",false);
     Configuration.browserCapabilities = capabilities;
