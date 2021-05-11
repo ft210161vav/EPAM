@@ -29,7 +29,6 @@ public class StartPage {
             $(By.id("onetrust-accept-btn-handler"));
 
 @BeforeAll
-
     public static void init() {
     Configuration.browser="chrome";
     Configuration.holdBrowserOpen = false;
