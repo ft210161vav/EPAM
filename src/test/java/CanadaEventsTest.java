@@ -1,4 +1,3 @@
-import Pages.BasePage;
 import Pages.StartPage;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
