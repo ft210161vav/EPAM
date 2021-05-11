@@ -38,6 +38,10 @@ public class EventsCardsTest extends StartPage{
          *  определяем координаты каждого из блоков и убеждаемся, что они следуют друг за другом
          */
 
+        //** Проверяем, что блоки наименования события и дат являются соседями - следуют за один за другим
+
+        assert ($x("//div[@class='evnt-event-name']/following-sibling::div[@class='evnt-event-dates']").isDisplayed());
+
         checkCoordinates();
 
     }
